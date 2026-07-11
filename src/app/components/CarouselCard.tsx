@@ -21,8 +21,8 @@ interface functionRef {
 }
 
 
-const CARD_H = 280;
-const CARD_W = 200;
+const CARD_H = 380;
+const CARD_W = 300;
 const SCALE = 1.35;
 
 const CarouselCard = ({ projects , onHoverStart , onHoverEnd }: ProjectsProps) => {
@@ -77,11 +77,11 @@ const CarouselCard = ({ projects , onHoverStart , onHoverEnd }: ProjectsProps) =
               className="titlePanel absolute left-0 pointer-events-none flex flex-col gap-[1rem]">
               
               <TextReveal ref={numberRef} trigger="manual" splitBy="chars">
-                  <h3 className="text-[1rem] text-[#010101]"> {projects.number}</h3>
+                  <h3 className="text-[1rem] text-[#010101] text-white"> {projects.number}</h3>
               </TextReveal>
 
               <TextReveal ref={titleRef} trigger="manual" splitBy="words">
-                  <h3 className="text-[1rem] text-[#010101]"> {projects.title}</h3>
+                  <h3 className="text-[1rem] text-[#010101] text-white"> {projects.title}</h3>
               </TextReveal>
           </div>
           
