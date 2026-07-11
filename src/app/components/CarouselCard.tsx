@@ -80,7 +80,7 @@ const CarouselCard = ({ projects , onHoverStart , onHoverEnd }: ProjectsProps) =
                   <h3 className="text-[1rem] text-[#010101] text-white"> {projects.number}</h3>
               </TextReveal>
 
-              <TextReveal ref={titleRef} trigger="manual" splitBy="words">
+              <TextReveal ref={titleRef} trigger="manual" splitBy="chars">
                   <h3 className="text-[1rem] text-[#010101] text-white"> {projects.title}</h3>
               </TextReveal>
           </div>
