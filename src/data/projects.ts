@@ -1,4 +1,23 @@
-export const projects = [
+export interface Project {
+    id: number;
+    slug: string;
+    number: string;
+    title: string;
+    subtitle: string;
+    category: string;
+    year: string;
+    role: string;
+    description: string;
+    longDescription: string;
+    coverImage: string;
+    heroImage: string;
+    gallery: string[];
+    tags: string[];
+}
+
+
+
+export const projects: Project[] = [
     {
         id: 1,
         slug: "archive-ff24",

@@ -1,9 +1,12 @@
+import TextReveal from "../components/TextReveal"
 
 
 const page = () => {
   return (
     <div>
-      <h1>about</h1>
+      <TextReveal trigger="mount" splitBy="chars">
+        <h1 className="text-[6rem]">about section</h1>
+      </TextReveal>
     </div>
   )
 }

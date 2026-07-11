@@ -101,6 +101,7 @@ const TextReveal = forwardRef<TextRevealRef , TextRevealProps>(
                 })
             };
 
+            //Cleanup the functions.....
             return () => {
                 tlRef.current?.kill();
                 splitRef.current?.revert();
