@@ -1,5 +1,6 @@
-import gsap, { ScrollTrigger , SplitText , useGSAP } from "@/src/libs/gsap";
-import { forwardRef, ReactNode, useRef } from "react"
+"use client";
+import gsap, { ScrollTrigger, SplitText, useGSAP } from "@/src/libs/gsap";
+import { forwardRef, ReactNode, useImperativeHandle, useRef } from "react"
 
 
 
@@ -15,10 +16,16 @@ interface TextRevealProps {
     ease?: string;
 }
 
+
+interface TextRevealRef {
+    play: () => void;
+    reverse: () => void;
+    reset: () => void;
+}
 /* 
 @description -> We use forwardref to use the manual scrolltrigger functionality....
 */
-const TextReveal = forwardRef<HTMLDivElement , TextRevealProps>(
+const TextReveal = forwardRef<TextRevealRef , TextRevealProps>(
     (
      {
 
@@ -33,11 +40,68 @@ const TextReveal = forwardRef<HTMLDivElement , TextRevealProps>(
         ease = "power3.out"
 
         }, ref) => {
-        const wrapperRef = useRef(null);
+        const wrapperRef = useRef<HTMLDivElement | null>(null);
+        const splitRef = useRef<SplitText | null>(null);
+        const tlRef = useRef<gsap.core.Timeline | null>(null);
+
+        
+        useImperativeHandle(ref, () => ({
+            play: () => tlRef.current?.play(),
+            reverse: () => tlRef.current?.reverse(),
+            reset: () => tlRef.current?.pause(0)
+        }));
         
         
         useGSAP(() => {
-            
+
+            if (!wrapperRef.current) return;
+
+            splitRef.current = new SplitText(wrapperRef.current, {
+                type: splitBy,
+                lineThreshold: 0.3
+            });
+
+            const elements = splitRef.current[splitBy];
+
+            gsap.set(elements, {
+                yPercent: 110
+            });
+
+            tlRef.current = gsap.timeline({
+                paused: true,
+                defaults: { delay },
+            });
+
+            tlRef.current.to(elements, {
+                yPercent: 0,
+                opacity: 1,
+                duration,
+                ease,
+                stagger: {
+                    each: stagger,
+                    from: "start",
+                },
+            });
+
+
+            if (trigger === "mount") {
+                tlRef.current.play();
+            };
+
+            if (trigger === "scroll") {
+                ScrollTrigger.create({
+                    trigger: wrapperRef.current,
+                    start: scrollStart,
+                    once: true,
+                    onEnter: () => tlRef.current?.play(),
+                })
+            };
+
+            return () => {
+                tlRef.current?.kill();
+                splitRef.current?.revert();
+            };
+
         }, {
             scope: wrapperRef
         })
