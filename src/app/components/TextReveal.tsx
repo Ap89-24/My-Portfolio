@@ -24,6 +24,7 @@ interface TextRevealRef {
 }
 /* 
 @description -> We use forwardref to use the manual scrolltrigger functionality....
+And also by using forwardRef the parent can also pass ref to the children for accessing the methods inside the children
 */
 const TextReveal = forwardRef<TextRevealRef , TextRevealProps>(
     (
@@ -44,7 +45,10 @@ const TextReveal = forwardRef<TextRevealRef , TextRevealProps>(
         const splitRef = useRef<SplitText | null>(null);
         const tlRef = useRef<gsap.core.Timeline | null>(null);
 
-        
+
+        /* 
+        @description -> Lets the child customize what the parent receives through that ref, exposing only the methods or values you choose by using useImperativeHandle.
+        */
         useImperativeHandle(ref, () => ({
             play: () => tlRef.current?.play(),
             reverse: () => tlRef.current?.reverse(),

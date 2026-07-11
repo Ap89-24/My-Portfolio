@@ -6,6 +6,8 @@ import TextReveal from "./components/TextReveal";
 export default function Home() {
 
   const triggerRef = useRef(null);
+
+
   const handleHoverEnter = () => {
     triggerRef.current?.play();
   }
@@ -13,6 +15,7 @@ export default function Home() {
   const handleHoveLeave = () => {
     triggerRef.current?.reverse();
   }
+  
   return (
     <main className="h-[300vh] w-full">
       <div className="h-[6rem] w-[8rem] bg-red-500"
