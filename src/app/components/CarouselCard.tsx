@@ -21,8 +21,8 @@ interface functionRef {
 }
 
 
-const CARD_H = 380;
-const CARD_W = 300;
+const CARD_H = 300;
+const CARD_W = 250;
 const SCALE = 1.35;
 
 const CarouselCard = ({ projects , onHoverStart , onHoverEnd }: ProjectsProps) => {
@@ -42,6 +42,13 @@ const CarouselCard = ({ projects , onHoverStart , onHoverEnd }: ProjectsProps) =
             ease: "power3.inOut"
         });
 
+        gsap.to(imageRef.current, {
+            scale: 1,
+            duration: 0.48,
+            ease: "power3.inOut",
+            stagger: 0.3
+        });
+
         numberRef.current?.play();
         titleRef.current?.play();
     };
@@ -54,6 +61,13 @@ const CarouselCard = ({ projects , onHoverStart , onHoverEnd }: ProjectsProps) =
             height: CARD_H,
             duration: 0.3,
             ease: "power3.inOut"
+        });
+
+        gsap.to(imageRef.current, {
+            scale: 1.3,
+            duration: 0.48,
+            ease: "power3.inOut",
+            stagger: 0.3
         });
 
         numberRef.current?.reverse();
@@ -80,7 +94,7 @@ const CarouselCard = ({ projects , onHoverStart , onHoverEnd }: ProjectsProps) =
                   <h3 className="text-[1rem] text-[#010101] text-white"> {projects.number}</h3>
               </TextReveal>
 
-              <TextReveal ref={titleRef} trigger="manual" splitBy="chars">
+              <TextReveal ref={titleRef} trigger="manual" splitBy="chars" >
                   <h3 className="text-[1rem] text-[#010101] text-white"> {projects.title}</h3>
               </TextReveal>
           </div>
@@ -88,7 +102,7 @@ const CarouselCard = ({ projects , onHoverStart , onHoverEnd }: ProjectsProps) =
           <div className="imageDiv absolute h-full w-full overflow-hidden">
               <img
                   style={{transformOrigin: "center center" , userSelect: "none"}}
-                  className="h-full w-full object-cover" ref={imageRef} src={projects.coverImage} alt={projects.title} />
+                  className="h-full w-full object-cover scale-[1.5]" ref={imageRef} src={projects.coverImage} alt={projects.title} />
           </div>
     </div>
   )

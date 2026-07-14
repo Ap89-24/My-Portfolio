@@ -16,7 +16,7 @@ interface ProjectsProps {
     kill: () => void;
 };
 
-const CARD_H = 380;
+const CARD_H = 400;
 const CARD_W = 300;
 const SCALE = 1.35;
 const CARD_GAP = 60;
