@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import LenisProvider from "../providers/LenisProvider";
+import Navbar from "./components/Navbar";
 
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
       className={`h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Navbar />
         <LenisProvider>
         {children}
         </LenisProvider>
