@@ -72,7 +72,7 @@ const useViewTransition = () => {
             scaleY: 1,
             duration: 0.60,
             ease: "power2.inOut",
-            delay: 0.7,
+            delay: 0.8,
             stagger: {
                 each: 0.02,
                 from: "edges"
@@ -90,7 +90,7 @@ const useViewTransition = () => {
                     scaleY: 0,
                     duration: 0.7,
                     ease: "power2.inOut",
-                    delay: 0.3,
+                    delay: 0.8,
                     stagger: {
                         each: 0.02,
                         from: "edges"
