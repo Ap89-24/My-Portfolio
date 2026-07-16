@@ -13,8 +13,6 @@ const images = [
     "/images/image-3.jpg",
     "/images/image-4.jpg",
     "/images/image-5.jpg",
-    "/images/image-6.jpg",
-    "/images/image-7.jpg",
 ];
 
 let currentImage = 0;
