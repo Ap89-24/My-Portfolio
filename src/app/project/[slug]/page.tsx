@@ -1,4 +1,4 @@
-import { projects } from "@/src/data/projects"
+import { Project, projects } from "@/src/data/projects"
 import ProjectPage from "../../components/ProjectPage"
 
 
@@ -14,11 +14,12 @@ const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const index = projects.findIndex((p) => p.slug == slug);
   const project = projects[index];
+  const nextProject = projects[(index + 1) % projects.length];
   return (
     <div>
-       <ProjectPage project={project} />  
+      <ProjectPage project={project} nextProject={nextProject} />
     </div>
-  )
+  );
 }
 
 export default page
