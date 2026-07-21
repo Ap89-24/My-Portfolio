@@ -3,10 +3,16 @@ import Image from "next/image";
 import TextReveal from "./TextReveal";
 import gsap, { useGSAP } from "@/src/libs/gsap";
 import { useRef } from "react";
+import { Project } from "@/src/data/projects";
 
-const ProjectPage = ({ project }) => {
+
+interface ProjectsProps {
+    project: Project
+}
+
+const ProjectPage = ({ project }: ProjectsProps) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const imageRef = useRef<HTMLDivElement | null>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
 
   useGSAP(
     () => {
