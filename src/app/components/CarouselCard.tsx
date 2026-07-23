@@ -82,38 +82,50 @@ const CarouselCard = ({ projects , onHoverStart , onHoverEnd }: ProjectsProps) =
     }
 
   return (
-      <div ref={cardRef}
-          onMouseEnter={onEnter}
-          onClick={handleClick}
-          onMouseLeave={onLeave}
-          style={{
-              width: CARD_W,
-              height: CARD_H,
-              flexShrink: 0,
-              overflow: "visible",
-              cursor: "pointer"
-          }}
-          className="relative"
+    <div
+      ref={cardRef}
+      onMouseEnter={onEnter}
+      onClick={handleClick}
+      onMouseLeave={onLeave}
+      style={{
+        width: CARD_W,
+        height: CARD_H,
+        flexShrink: 0,
+        overflow: "visible",
+        cursor: "pointer",
+      }}
+      className="relative"
+    >
+      <div
+        style={{ bottom: "calc(100% + 3rem)" }}
+        className="titlePanel absolute left-0 pointer-events-none flex flex-col gap-[1rem]"
       >
-          <div style={{ bottom: "calc(100% + 3rem)" }}
-              className="titlePanel absolute left-0 pointer-events-none flex flex-col gap-[1rem]">
-              
-              <TextReveal ref={numberRef} trigger="manual" splitBy="chars">
-                  <h3 className="text-[1rem] text-[#010101] text-white"> {projects.number}</h3>
-              </TextReveal>
+        <TextReveal ref={numberRef} trigger="manual" splitBy="chars">
+          <h3 className="text-[1rem] text-[#010101] text-white">
+            {" "}
+            {projects.number}
+          </h3>
+        </TextReveal>
 
-              <TextReveal ref={titleRef} trigger="manual" splitBy="chars" >
-                  <h3 className="text-[1rem] text-[#010101] text-white"> {projects.title}</h3>
-              </TextReveal>
-          </div>
-          
-          <div className="imageDiv absolute h-full w-full overflow-hidden">
-              <img
-                  style={{transformOrigin: "center center" , userSelect: "none"}}
-                  className="h-full w-full object-cover scale-[1.5]" ref={imageRef} src={projects.coverImage} alt={projects.title} />
-          </div>
+        <TextReveal ref={titleRef} trigger="manual" splitBy="chars">
+          <h3 className="text-[1rem] text-[#010101] text-white">
+            {" "}
+            {projects.title}
+          </h3>
+        </TextReveal>
+      </div>
+
+      <div className="imageDiv absolute h-full w-full overflow-hidden">
+        <img
+          style={{ transformOrigin: "center center", userSelect: "none" }}
+          className="h-full w-full object-cover scale-[1.5]"
+          ref={imageRef}
+          src={projects.coverImage}
+          alt={projects.title}
+        />
+      </div>
     </div>
-  )
+  );
 }
 
 export default CarouselCard

@@ -1,7 +1,8 @@
 "use client";
 import InfiniteCarousel from "./components/InfiniteCarousel";
 import { Project, projects } from "../data/projects";
-// import LandingPage from "./components/uniqueBackground";
+import Intro from "./components/Intro";
+
 
 interface ProjectsProps {
   projects: Project[];
@@ -18,15 +19,16 @@ export default function Home() {
   const kill = () => { };
 
   return (
-    <main className="relative h-screen w-full flex items-center overflow-hidden">
-
-      {/* <LandingPage /> */}
-      <InfiniteCarousel
-        projects={projects}
-        play={play}
-        reverse={reverse}
-        kill={kill}
-      />
+    <main className="relative h-screen w-full flex flex-col items-center px-10 pt-28">
+      <Intro />
+      <div className="mt-20">
+        <InfiniteCarousel
+          projects={projects}
+          play={play}
+          reverse={reverse}
+          kill={kill}
+        />
+      </div>
     </main>
   );
 }
