@@ -120,7 +120,7 @@ const ProjectPage = ({ project, nextProject }: ProjectsProps) => {
               >
                 <Image
                   src={elem}
-                  alt=""
+                  alt="Gallery Image"
                   fill
                   priority
                   className="h-full w-full object-cover"

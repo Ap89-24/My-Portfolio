@@ -64,7 +64,7 @@ const removeOverlay = () => {
 
 const useViewTransition = () => {
 
-    removeOverlay();
+    // removeOverlay();
 
     const router = useRouter();
 
